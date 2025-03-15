@@ -9,12 +9,14 @@ namespace DBWork
 		public AuthorizationForm()
 		{
 			InitializeComponent();
+
 		}
 
 
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+
 			string roleUser = String.Empty;
 			int staffid;
 
@@ -26,11 +28,14 @@ namespace DBWork
 				staffid = foundUser.UserId;
 				roleUser = foundUser.role;
 				var crudForm = new CRUDForm();
+
 				this.Visible = false;
 				//crudForm.Show();
 				//crudForm.SaveDataStaff(staffid, foundUser);
+				this.Hide();
 				ViewStaffForm viewStaff = new ViewStaffForm();
 				viewStaff.Show();
+
 
 			}
 		}
@@ -46,6 +51,11 @@ namespace DBWork
 		{
 			Registation registation = new Registation();
 			registation.Show();
+		}
+
+		private void AuthorizationForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Application.Exit();
 		}
 	}
 }

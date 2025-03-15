@@ -22,7 +22,7 @@ namespace DBWork
 			InitializeComponent();
 		}
 
-		public void SaveDataStaff(int idStaff, User user)
+		public void SaveDataStaff(int idStaff, User user = null)
 		{
 			//foreach (var item in customControl1.Controls)
 			//{
@@ -46,8 +46,8 @@ namespace DBWork
 				b.ForEach(i => comboBox1.Items.Add(i));
 				comboBox1.SelectedIndex = 0;
 
-				richTextBox6.Text = user.Email;
-				richTextBox7.Text = user.Password;
+				//richTextBox6.Text = user.Email;
+				//richTextBox7.Text = user.Password;
 
 			}
 		}
@@ -65,15 +65,13 @@ namespace DBWork
 				var depString = comboBox1.SelectedItem.ToString();
 				var dep = db.Departments.SingleOrDefault(i => i.Name == depString);
 				staffData.DepartmentId = dep.DepartmentId;
-				userData.Email = richTextBox6.Text;
-				userData.Password = richTextBox7.Text;
 				db.SaveChanges();
 			}
 		}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-
+			this.Hide();
 		}
 
 		private void CRUDForm_FormClosed(object sender, FormClosedEventArgs e)
